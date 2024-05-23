@@ -1,0 +1,19 @@
+{
+    "name": "cyrilflambard/hinking-project",
+    "type": "project",
+    "require": {
+        "altorouter/altorouter": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Models\\": "src/models",
+            "Controllers\\": "src/controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "cyril-fl",
+            "email": "cyril-f@hotmail.com"
+        }
+    ]
+}
