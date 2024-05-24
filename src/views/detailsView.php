@@ -31,7 +31,10 @@ echo "<p>Elevation Gain: " . $hikeDetails['elevation_gain'] . "</p>";
 echo "<p>Description: " . $hikeDetails['description'] . "</p>";
 echo "<p>Created At: " . $hikeDetails['created_at'] . "</p>";
 echo "<p>Updated At: " . $hikeDetails['updated_at'] . "</p>";
+echo "<p>User: " . $hikeDetails['user_id'] . "</p>";
 
+// Hyperlink to the home page
+echo "<a href='home'>Go to Home Page</a>";
 
 include 'includes/footer.php'
 ?>
