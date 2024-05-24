@@ -69,10 +69,6 @@ class Users extends Database
                 header('Location: /home');
                 exit();
 
-//                $isValidUser = true;
-//                $isValidUserNotification = '';
-//                return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
-
             } else {
                 $isValidUser = false;
                 $isValidUserNotification = 'Invalid password';

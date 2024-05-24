@@ -10,7 +10,7 @@ list (
 
 ?>
 
-
+<main>
     <h1>Login</h1>
 
     <?php if (isset($notification)): ?>
@@ -35,6 +35,7 @@ list (
     <a href="/signin">Not registered yet?</a>
 
     </div>
+</main>
 
 <?php
 include 'includes/footer.php'
