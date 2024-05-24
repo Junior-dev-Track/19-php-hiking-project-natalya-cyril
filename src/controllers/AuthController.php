@@ -24,7 +24,7 @@ class AuthController extends RegisterController
         $cleanedData = array($cleanedFirstName, $cleanedLastName, $cleanedUsername, $cleanedEmail, $cleanedPassword);
 
         // Is the user already registered?
-        $verified = Users::VerifyUser($cleanedUsername, $cleanedEmail);
+        $verified = Users::verifyUser($cleanedUsername, $cleanedEmail);
 
         // If the user is not already registered, add the user else return the notification
         if ($verified['isNewUser']) {
@@ -42,21 +42,24 @@ class AuthController extends RegisterController
         }
     }
 
-    public static function loginUser(): void
+    public static function loginUser(): array
     {
-        $cleanedUsername = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $cleanedPassword = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if (!empty($_POST)) {
+            //Clean Data
+            $cleaningData = new self;
+            $cleanedData = $cleaningData->cleanData($_POST);
 
-        $user = new Users();
+            // Sanitize data
+            $cleanedUsername = filter_var($cleanedData['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $cleanedPassword = filter_var($cleanedData['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        list(
-            'isValidUser' => $isValidUser,
-            'isValidUserNotification' => $isValidUserNotification
-        ) = $user->VerifyUser($cleanedUsername, $cleanedPassword);
-        // retourne un tableau avec deux clés : isValidUser et isValidUserNotification
-        // iclurer les reponse dans la page
+            // Login user
+            $user = new Users();
 
-
+            return $user->loginUser($cleanedUsername, $cleanedPassword);
+        }   else {
+            return array('isValidUser' => false, 'isValidUserNotification' => '');
+        }
     }
 
     public static function logoutUser(): void

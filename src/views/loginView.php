@@ -1,12 +1,23 @@
 <?php
-include 'includes/header.php'
+include 'includes/header.php';
+use Controllers\AuthController as Auth;
 
 // todo: add the login form here
+list (
+'isValidUser' => $isValidUser,
+'isValidUserNotification' => $notification
+) = Auth::loginUser();
 
 ?>
 
 
     <h1>Login</h1>
+
+    <?php if (isset($notification)): ?>
+        <div class="$notification">
+            <p><?= $notification ?></p>
+        </div>
+    <?php endif; ?>
 
     <div class="login-container">
 

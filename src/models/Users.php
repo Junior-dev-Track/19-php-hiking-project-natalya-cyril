@@ -8,7 +8,7 @@ use Models\Database;
 
 class Users extends Database
 {
-    public static function VerifyUser(string $username, string $email): array
+    public static function verifyUser(string $username, string $email): any
     {
         // Check if the user already exists in the database
         require_once "Database.php";
@@ -53,34 +53,35 @@ class Users extends Database
     public function loginUser(string $username, string $password): array
     {
         // Check if the user exists in the database
-        $sql = "SELECT * FROM Users WHERE username = :username";
+        $sql = "SELECT password FROM Users WHERE username = :username";
         $param = (['username' => $username]);
         $stmt = $this -> query($sql, $param);
         $isUser = $stmt -> fetch();
-        $isPasswordMatched = password_verify($password, $isUser['password']);
 
-        // Check if the password is correct
-        if ($isUser && $isPasswordMatched) {
+        // If user exists, check if the password is correct --- Else return an error message
+        if ($isUser) {
+            $isPasswordMatched = password_verify($password, $isUser['password']);
 
-            $this -> launchSession($isUser);
+            //  If the password is correct, launch the session --- Else return an error message
+            if ($isPasswordMatched) {
+                $this->launchSession($username);
 
-            $isValidUser = true;
-            $isValidUserNotification = '';
-            return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
+                header('Location: /home');
+                exit();
 
-        } else if (!$isUser) {
-            $isValidUser = false;
-            $isValidUserNotification = 'Invalid username';
-            return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
+//                $isValidUser = true;
+//                $isValidUserNotification = '';
+//                return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
 
-        } else if (!$isPasswordMatched) {
-            $isValidUser = false;
-            $isValidUserNotification = 'Invalid password';
-            return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
+            } else {
+                $isValidUser = false;
+                $isValidUserNotification = 'Invalid password';
+                return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
 
+            }
         } else {
             $isValidUser = false;
-            $isValidUserNotification = 'Invalid username and password';
+            $isValidUserNotification = 'Invalid username';
             return array('isValidUser' => $isValidUser, 'isValidUserNotification' => $isValidUserNotification);
         }
     }
@@ -93,10 +94,12 @@ class Users extends Database
         $stmt = $this -> query($sql, $param);
         $user = $stmt -> fetch();
 
-        $_SESSION['id'] = $user['id'];
+        $_SESSION['isConnected'] = true;
+        $_SESSION['id'] = $user['ID'];
         $_SESSION['firstname'] = $user['firstname'];
         $_SESSION['lastname'] = $user['lastname'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['role'] = $user['role'];
     }
 }
