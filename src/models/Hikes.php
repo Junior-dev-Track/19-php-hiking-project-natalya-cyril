@@ -8,10 +8,11 @@ use PDO;
 class Hikes extends Database
 {
 
-    public function getAllNames(int $page = 1, int $itemsPerPage = 10): array
+    public static function getAllNames(int $page = 1, int $itemsPerPage = 6): array
     {
+        $database = new self();
         $offset = ($page - 1) * $itemsPerPage;
-        $stmt = $this->query("SELECT name, distance FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
+        $stmt = $database->query("SELECT id, name, distance FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
         $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $hikes;
     }
@@ -23,4 +24,21 @@ class Hikes extends Database
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
+
+    public static function getHikeById(int $id): array
+    {
+        $database = new self();
+        $stmt = $database->query("SELECT * FROM Hikes WHERE id = :id", ['id' => $id]);
+        $hike = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $hike;
+    }
+    public static function getHikeDetails(int $hikeId): ?array
+    {
+        $database = new self();
+        $stmt = $database->query("SELECT * FROM Hikes WHERE id = :id", ['id' => $hikeId]);
+        $hike = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $hike;
+    }
+
+
 }
