@@ -28,7 +28,16 @@ class Database
     public function query(string $query, array $params = []): PDOStatement
     {
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute($params);
+
+        foreach ($params as $key => &$val) {
+            if (is_int($val)) {
+                $stmt->bindParam($key, $val, PDO::PARAM_INT);
+            } else {
+                $stmt->bindParam($key, $val);
+            }
+        }
+
+        $stmt->execute();
 
         return $stmt;
     }

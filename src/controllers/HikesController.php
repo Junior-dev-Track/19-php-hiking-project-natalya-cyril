@@ -11,10 +11,10 @@ class HikesController
 
     }
 
-    public static function getHikeNames(): array
+    public static function getHikeNames(int $page = 1): array
     {
         $hikesModel = new Hikes();
-        return $hikesModel->getAllNames();
+        return $hikesModel->getAllNames($page);
     }
     
 }
