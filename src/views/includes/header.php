@@ -1,8 +1,13 @@
+<?php
+    declare(strict_types=1);
+    require_once __DIR__ . '/../../../vendor/autoload.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wonderlust</title>
 </head>
 
 
