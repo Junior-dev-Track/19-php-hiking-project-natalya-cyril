@@ -16,8 +16,8 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
     <main>
         <h1>Home</h1>
         <h2>List of hikes</h2>
-        <?php foreach ($hikeNames as $name): ?>
-            <h3><?php echo $name['name']; ?></h3>
+        <?php foreach ($hikeNames as $hike): ?>
+            <h3><?php echo $hike['name']; ?> - <?php echo $hike['distance']; ?> km</h3>
         <?php endforeach; ?>
 
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>

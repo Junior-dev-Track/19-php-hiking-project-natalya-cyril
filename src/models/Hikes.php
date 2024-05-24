@@ -11,7 +11,7 @@ class Hikes extends Database
     public function getAllNames(int $page = 1, int $itemsPerPage = 10): array
     {
         $offset = ($page - 1) * $itemsPerPage;
-        $stmt = $this->query("SELECT name FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
+        $stmt = $this->query("SELECT name, distance FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
         $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $hikes;
     }
