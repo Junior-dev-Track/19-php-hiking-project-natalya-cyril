@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/models" isTestSource="false" packagePrefix="Models\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/altorouter/altorouter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

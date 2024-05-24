@@ -5,10 +5,11 @@ namespace Models;
 
 use PDO;
 use Models\Database;
+use Controllers\MailController;
 
 class Users extends Database
 {
-    public static function verifyUser(string $username, string $email): any
+    public static function verifyUser(string $username, string $email): array
     {
         // Check if the user already exists in the database
         require_once "Database.php";
@@ -48,6 +49,8 @@ class Users extends Database
         $param =  (['name' => $firstname, 'lastname' => $lastName, 'username' => $username, 'email' => $email, 'password' => $hashedPassword]);
 
         $this -> query($sql, $param);
+        $recipientEmail = "cyril-f@hotmail.com";
+        MailController::register($recipientEmail,$username);
     }
 
     public function loginUser(string $username, string $password): array
@@ -98,4 +101,6 @@ class Users extends Database
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
     }
+
+    // TODO : add a cookie to store the user's session
 }

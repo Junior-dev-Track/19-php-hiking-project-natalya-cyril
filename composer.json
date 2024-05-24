@@ -2,7 +2,8 @@
     "name": "cyrilflambard/hinking-project",
     "type": "project",
     "require": {
-        "altorouter/altorouter": "^2.0"
+        "altorouter/altorouter": "^2.0",
+        "phpmailer/phpmailer": "^6.9"
     },
     "autoload": {
         "psr-4": {
