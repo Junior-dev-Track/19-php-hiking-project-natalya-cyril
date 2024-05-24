@@ -1,4 +1,4 @@
 src/models/config.php
-src/controllers/mail.config.php
+# mettre la config des mails aussi
 vendor
 
