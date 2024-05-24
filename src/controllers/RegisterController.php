@@ -119,5 +119,20 @@ class RegisterController
         }
     }
 
+    public function cleanData(): array
+    {
+        // Sanitize data
+
+//        $array = array_map('trim', $_POST);
+//        $array = array_map('stripslashes', $_POST);
+//        $array = array_map('strip_tags', $_POST);
+//        $array = array_map('htmlspecialchars', $_POST);
+
+
+
+
+        return $array;
+
+    }
 }
 ?>
