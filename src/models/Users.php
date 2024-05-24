@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Models;
 
-use PDO;
 use Models\Database;
+use PDO;
 
 class Users extends Database
 {
@@ -97,5 +97,13 @@ class Users extends Database
         $_SESSION['username'] = $user['username'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
+    }
+
+
+    public function getUserDetails($userId) {
+        $query = "SELECT * FROM Users WHERE id = :userId";
+        $params = [':userId' => $userId];
+        $result = $this->query($query, $params);
+        return $result->fetch();
     }
 }
