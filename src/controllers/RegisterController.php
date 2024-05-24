@@ -66,16 +66,28 @@ class RegisterController
         return array('isValidConfirmEmail' => $isValidConfirmEmail, 'errorMessageConfirmEmail' => $errorMessageConfirmEmail);
     }
 
+    protected function cleanData(array $array): array {
+        $array = array_map('trim', $array);
+        $array = array_map('stripslashes', $array);
+        $array = array_map('strip_tags', $array);
+        $array = array_map('htmlspecialchars', $array);
+        return $array;
+    }
+
     public static function userInfoCheck(): array
     {
         if (!empty($_POST)) {
 
+            //Clean Data
+            $cleaningData = new self;
+            $cleanedData = $cleaningData-> cleanData($_POST);
+
             // Sanitize data
-            $username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $confirm_password = filter_var($_POST['confirm_password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-            $confirm_email = filter_var($_POST['confirm_email'], FILTER_SANITIZE_EMAIL);
+            $username = filter_var($cleanedData['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_var($cleanedData['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $confirm_password = filter_var($cleanedData['confirm_password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $email = filter_var($cleanedData['email'], FILTER_SANITIZE_EMAIL);
+            $confirm_email = filter_var($cleanedData['confirm_email'], FILTER_SANITIZE_EMAIL);
 
             // Check data
             $usernameResult = self::checkUsername($username);
@@ -119,20 +131,6 @@ class RegisterController
         }
     }
 
-    public function cleanData(): array
-    {
-        // Sanitize data
 
-//        $array = array_map('trim', $_POST);
-//        $array = array_map('stripslashes', $_POST);
-//        $array = array_map('strip_tags', $_POST);
-//        $array = array_map('htmlspecialchars', $_POST);
-
-
-
-
-        return $array;
-
-    }
 }
 ?>

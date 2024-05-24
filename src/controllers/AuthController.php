@@ -9,12 +9,17 @@ class AuthController extends RegisterController
 
     public static function registerUser(): array
     {
+
         // Data cleaning
-        $cleanedFirstName = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $cleanedLastName = filter_var($_POST['lastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $cleanedUsername = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $cleanedEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $cleanedPassword = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleaningData = new self;
+        $cleanedData = $cleaningData-> cleanData($_POST);
+
+        // Sanitize data
+        $cleanedFirstName = filter_var($cleanedData['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedLastName = filter_var($cleanedData['lastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedUsername = filter_var($cleanedData['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedEmail = filter_var($cleanedData['email'], FILTER_SANITIZE_EMAIL);
+        $cleanedPassword = filter_var($cleanedData['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $cleanedData = array($cleanedFirstName, $cleanedLastName, $cleanedUsername, $cleanedEmail, $cleanedPassword);
 
