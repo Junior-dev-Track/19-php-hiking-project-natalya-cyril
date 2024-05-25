@@ -32,7 +32,9 @@ list (
 
             <input type="submit" value="Login">
         </form>
-    <a href="/signin">Not registered yet?</a>
+    <a href="/signin">Not registered yet ?</a>
+    <a href="/forgotPassword">Forgot password ?</a>
+
 
     </div>
 </main>

@@ -1,5 +1,11 @@
 <?php
-include 'includes/header.php'
+include 'includes/header.php';
+
+if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
+    header('Location: /login');
+    exit();
+}
+
 ?>
 
 <main>

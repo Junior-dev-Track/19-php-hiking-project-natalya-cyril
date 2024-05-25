@@ -68,7 +68,11 @@ class AuthController extends RegisterController
         $user->logoutUser();
     }
 
-
+    public static function forgotPassword(): void
+    {
+        $user = new Users();
+        $user->forgotPassword();
+    }
 
 }
 

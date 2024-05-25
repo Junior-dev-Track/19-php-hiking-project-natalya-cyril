@@ -103,4 +103,18 @@ class Users extends Database
     }
 
     // TODO : add a cookie to store the user's session
+
+    public function logoutUser(): void
+    {
+        session_unset();
+        session_destroy();
+        header("Location: /home");
+        exit;
+    }
+
+    public function forgotPassword(): void
+    {
+        // Todo : send an email to the user with a link to reset the password
+        echo 'forgot password';
+    }
 }

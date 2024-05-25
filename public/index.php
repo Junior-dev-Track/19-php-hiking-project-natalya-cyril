@@ -40,6 +40,11 @@ $router->map('GET', '/logout', function() {
     require __DIR__ . "/../src/views/logoutView.php";
 });
 
+// Forgot Password
+$router->map('GET', '/forgotPassword', function() {
+    require __DIR__ . "/../src/views/script/forgotPassword.php";
+});
+
 // Profile
 $router->map('GET', '/profile', function() {
     require __DIR__ . "/../src/views/profileView.php";
