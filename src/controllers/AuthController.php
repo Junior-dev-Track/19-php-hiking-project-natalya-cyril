@@ -68,6 +68,34 @@ class AuthController extends RegisterController
         $user->logoutUser();
     }
 
+    public static function editProfile(): array
+    {
+        $cleaningData = new self;
+        $cleanedData = $cleaningData->cleanData($_POST);
+
+        $cleanedUsername = filter_var($cleanedData['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedFirstName = filter_var($cleanedData['firstname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedLastName = filter_var($cleanedData['lastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $cleanedEmail = filter_var($cleanedData['email'], FILTER_SANITIZE_EMAIL);
+
+        $cleanedData = array($cleanedUsername, $cleanedFirstName, $cleanedLastName, $cleanedEmail);
+
+        $user = new Users();
+        list (
+            'isAllEdited' => $isAllEdited,
+            'notification' => $notification
+        ) = $user->editProfile($cleanedData,  $_SESSION['username']);
+
+            var_dump($user->editProfile($cleanedData, $_SESSION['username']));
+           if ($isAllEdited) {
+               header('Location: /profile');
+
+               return array('isAllEdited' => $isAllEdited, 'notification' => $notification);
+            } else {
+               return array('isAllEdited' => $isAllEdited, 'notification' => $notification);
+            }
+    }
+
     public static function forgotPassword($email): void
     {
         $cleaningData = new self;

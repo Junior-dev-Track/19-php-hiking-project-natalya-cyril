@@ -20,8 +20,8 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
             <p>Email : <?= $_SESSION['email'] ?></p>
         </div>
         <div class="profile-actions">
-            <a href="#">Update Profile</a>
-            <a href="#">Change Password</a>
+            <a href="/editProfile">Edit Profile</a>
+            <a href="/editPassword">Change Password</a>
         </div>
 </main>
 

@@ -53,7 +53,21 @@ $router->map('GET', '/profile', function() {
     require __DIR__ . "/../src/views/profileView.php";
 });
 
+// Edit Profile
+$router->map('GET', '/editProfile', function() {
+    require __DIR__ . "/../src/views/editProfileView.php";
+});
+$router->map('POST', '/editProfile', function() {
+    require __DIR__ . "/../src/views/editProfileView.php";
+});
 
+// Change Password
+$router->map('GET', '/editPassword', function() {
+    require __DIR__ . "/../src/views/editPasswordView.php";
+});
+$router->map('POST', '/editPassword', function() {
+    require __DIR__ . "/../src/views/editPasswordView.php";
+});
 
 
 

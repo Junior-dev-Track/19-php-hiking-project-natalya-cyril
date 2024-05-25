@@ -112,6 +112,60 @@ class Users extends Database
         exit;
     }
 
+    public function editProfile(array $data, string $sessionUsername): array
+    {
+        $notification = '';
+
+        // Data recovery
+        list($username, $firstname, $lastName, $email) = $data;
+
+        // Update firstname and lastname even if email or username exists
+        $sql = "UPDATE Users SET firstname = :firstname, lastname = :lastname WHERE username = :sessionUsername";
+        $params = ['firstname' => $firstname, 'lastname' => $lastName, 'sessionUsername' => $sessionUsername];
+        $this->query($sql, $params);
+
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['lastname'] = $lastName;
+
+        // Check if the email already exists in the database (excluding the current user's email)
+        $sql = "SELECT COUNT(*) FROM Users WHERE email = :email AND username != :sessionUsername";
+        $params = ['email' => $email, 'sessionUsername' => $sessionUsername];
+        $stmt = $this->query($sql, $params);
+        $emailExists = $stmt->fetchColumn() > 0;
+
+        // Check if the username already exists in the database (excluding the current user's username)
+        $sql = "SELECT COUNT(*) FROM Users WHERE username = :username AND username != :sessionUsername";
+        $params = ['username' => $username, 'sessionUsername' => $sessionUsername];
+        $stmt = $this->query($sql, $params);
+        $usernameExists = $stmt->fetchColumn() > 0;
+
+        $isAllEdited = true;
+
+        if ($emailExists) {
+            $isAllEdited = false;
+            $notification .= 'Email already exists. ';
+        } else {
+            // Update email only if email does not exist
+            $sql = "UPDATE Users SET email = :email WHERE username = :sessionUsername";
+            $params = ['email' => $email, 'sessionUsername' => $sessionUsername];
+            $this->query($sql, $params);
+            $_SESSION['email'] = $email;
+        }
+
+        if ($usernameExists) {
+            $isAllEdited = false;
+            $notification .= 'Username already exists. ';
+        } else {
+            // Update username only if username does not exist
+            $sql = "UPDATE Users SET username = :username WHERE username = :sessionUsername";
+            $params = ['username' => $username, 'sessionUsername' => $sessionUsername];
+            $this->query($sql, $params);
+            $_SESSION['username'] = $username;
+        }
+
+        return ['isAllEdited' => $isAllEdited, 'notification' => $notification];
+    }
+
     public function forgotPassword($email): void
     {
         // Todo : send an email to the user with a link to reset the password
