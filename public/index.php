@@ -42,7 +42,10 @@ $router->map('GET', '/logout', function() {
 
 // Forgot Password
 $router->map('GET', '/forgotPassword', function() {
-    require __DIR__ . "/../src/views/script/forgotPassword.php";
+    require __DIR__ . "/../src/views/forgotPasswordView.php";
+});
+$router->map('POST', '/forgotPassword', function() {
+    require __DIR__ . "/../src/views/forgotPasswordView.php";
 });
 
 // Profile

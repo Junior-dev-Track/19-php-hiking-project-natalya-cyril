@@ -112,9 +112,19 @@ class Users extends Database
         exit;
     }
 
-    public function forgotPassword(): void
+    public function forgotPassword($email): void
     {
         // Todo : send an email to the user with a link to reset the password
-        echo 'forgot password';
+        echo 'forgot password </br>';
+        echo $email;
+        $sql = "SELECT username FROM Users WHERE email = :email";
+        $param = (['email' => $email]);
+        $stmt = $this -> query($sql, $param);
+        $user = $stmt -> fetch();
+        echo $user['username'];
+
+        $recipientEmail = "cyril-f@hotmail.com";
+        MailController::forgotPassword($recipientEmail, $user['username']);
+
     }
 }

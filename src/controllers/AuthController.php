@@ -68,10 +68,19 @@ class AuthController extends RegisterController
         $user->logoutUser();
     }
 
-    public static function forgotPassword(): void
+    public static function forgotPassword($email): void
     {
+        $cleaningData = new self;
+        $cleanedData = $cleaningData->cleanData($_POST);
+        $email = $cleanedData['email'];
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        echo $email;
+
         $user = new Users();
-        $user->forgotPassword();
+        $user->forgotPassword($email);
+
+        header('Location: /login');
     }
 
 }

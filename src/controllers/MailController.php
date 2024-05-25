@@ -61,4 +61,27 @@ class MailController
         } catch (Exception $e) {
         }
     }
+
+    public static function forgotPassword($email, $username)
+    {
+        $mailController = new MailController(); // Create an instance of MailController
+        $mailController->configurePhpMailer();   // Configure PHPMailer settings
+
+        $mailController->mail->addAddress($email, $username); // Add a recipient
+
+        // Content
+        $mailController->mail->isHTML(true);                                        // Set email format to HTML
+        $mailController->mail->Subject = 'Reset your password ' . $username;
+        $mailController->mail->Body = 'Click on the link to reset your password';
+        $mailController->mail->AltBody = 'Click on the link to reset your password';
+
+        try {
+            if ($mailController->mail->send()) {
+                echo 'Message has been sent';
+            } else {
+                echo 'Error sending message: ' . $mailController->mail->ErrorInfo;
+            }
+        } catch (Exception $e) {
+        }
+    }
 }
