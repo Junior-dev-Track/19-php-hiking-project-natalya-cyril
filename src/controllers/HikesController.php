@@ -6,10 +6,10 @@ use Models\Hikes;
 
 class HikesController
 {
-    public  static function test(){
-        echo 'tags controller test';
-
-    }
+//    public  static function test(){
+//        echo 'tags controller test';
+//
+//    }
 
     public static function getHikeNames(int $page = 1): array
     {
