@@ -53,6 +53,11 @@ $router->map('GET', '/profile', function() {
     require __DIR__ . "/../src/views/profileView.php";
 });
 
+//Details
+$router->map('GET', '/details', function() {
+    require __DIR__ . "/../src/views/detailsView.php";
+});
+
 // Edit Profile
 $router->map('GET', '/editProfile', function() {
     require __DIR__ . "/../src/views/editProfileView.php";

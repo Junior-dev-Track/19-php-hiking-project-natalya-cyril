@@ -181,4 +181,12 @@ class Users extends Database
         MailController::forgotPassword($recipientEmail, $user['username']);
 
     }
+
+
+    public function getUserDetails($userId) {
+        $query = "SELECT * FROM Users WHERE id = :userId";
+        $params = [':userId' => $userId];
+        $result = $this->query($query, $params);
+        return $result->fetch();
+    }
 }
