@@ -144,7 +144,10 @@ class AuthController extends RegisterController
 
                     Users::editPassword($currentUser, $newPassword);
                     $notification = 'Password successfully changed';
-                    return array('isEditPassword' => true, 'isEditPasswordNotification' => $notification);
+                    header('Location: /profile');
+                    return array('isEditPassword' => true, 'isEditPasswordNotification' => $notification);                    exit();
+                    exit();
+
                 } else {
                     $notification = $errorMessagePassword . $errorMessageConfirmPassword;
                     return array('isEditPassword' => false, 'isEditPasswordNotification' => $notification);
