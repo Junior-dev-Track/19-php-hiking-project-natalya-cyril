@@ -39,8 +39,7 @@ echo "<p>User Name: " . $userDetails['username'] . "</p>";
 
 // Display the image from the Hikes table
 echo "<img src='" . $hikeDetails['picture_url'] . "' alt='Hike Image' width='500' height='300'>";
-
-// Hyperlink to the home page
-echo "<a href='home'>Go back</a>";
-
+echo "<br>";
+// Hyperlink to the previous page
+echo "<a href='" . $_SERVER['HTTP_REFERER'] . "'>Go back</a>";
 include 'includes/footer.php';

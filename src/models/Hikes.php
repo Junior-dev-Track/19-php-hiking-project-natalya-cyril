@@ -12,7 +12,7 @@ class Hikes extends Database
     {
         $database = new self();
         $offset = ($page - 1) * $itemsPerPage;
-        $stmt = $database->query("SELECT id, name, distance FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
+        $stmt = $database->query("SELECT id, name, distance, duration, elevation_gain, description, created_at, updated_at FROM Hikes LIMIT :limit OFFSET :offset", ['limit' => $itemsPerPage, 'offset' => $offset]);
         $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $hikes;
     }
@@ -39,6 +39,12 @@ class Hikes extends Database
         $hike = $stmt->fetch(PDO::FETCH_ASSOC);
         return $hike;
     }
-
+    public static function getHikeTags(int $hikeId): array
+    {
+        $database = new self();
+        $stmt = $database->query("SELECT Tags.tag_name FROM HikeTags INNER JOIN Tags ON HikeTags.tag_id = Tags.ID WHERE HikeTags.hike_id = :id", ['id' => $hikeId]);
+        $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $tags;
+    }
 
 }
