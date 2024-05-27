@@ -2,11 +2,26 @@
 include 'includes/header.php';
 use Controllers\AuthController as Auth;
 
-Auth::EditPassword();
+if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
+    header('Location: /login');
+    exit();
+}
+
+list (
+    'isEditPassword' => $isEditPassword,
+    'isEditPasswordNotification' => $notification
+    ) = Auth::EditPassword();
 ?>
 
 <main>
     <h1>Change Password</h1>
+
+    <?php if (isset($notification)): ?>
+        <div class="$notification">
+            <p><?= $notification ?></p>
+        </div>
+    <?php endif; ?>
+
     <div class="change-password-container">
         <form id="changePasswordForm" action="" method="post">
             <label for="OldPassword">Old Password :</label>

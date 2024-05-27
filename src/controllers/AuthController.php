@@ -103,7 +103,7 @@ class AuthController extends RegisterController
         $email = $cleanedData['email'];
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-        echo $email;
+//        echo $email;
 
         $user = new Users();
         $user->forgotPassword($email);
@@ -113,7 +113,46 @@ class AuthController extends RegisterController
 
     public static function editPassword()
     {
-        echo 'edit password';
+        // Si $_POST get data
+        if (!empty($_POST)){
+            // Data cleaning
+            $cleaningData = new self;
+            $cleanedData = $cleaningData->cleanData($_POST);
+
+            $oldPassword = filter_var($cleanedData['oldPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $newPassword = filter_var($cleanedData['newPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $confirmPassword = filter_var($cleanedData['confirmPassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $currentUser = $_SESSION['username'];
+
+            list(
+                'isValidUser' => $isValidUser,
+                'isValidUserNotification' => $notification
+                ) = Users::comparePasswordToDB($currentUser, $oldPassword);
+
+            if ($isValidUser) {
+                $checkPassword = self::checkPassword($newPassword);
+                $checkConfirmPassword = self::checkConfirmPassword($newPassword, $confirmPassword);
+
+
+                $isValidPassword = $checkPassword['isValidPassword'];
+                $errorMessagePassword = $checkPassword['errorMessagePassword'];
+
+                $isValidConfirmPassword = $checkConfirmPassword['isValidConfirmPassword'];
+                $errorMessageConfirmPassword = $checkConfirmPassword['errorMessageConfirmPassword'];
+
+                if ($isValidPassword && $isValidConfirmPassword) {
+
+                    Users::editPassword($currentUser, $newPassword);
+                    $notification = 'Password successfully changed';
+                    return array('isEditPassword' => true, 'isEditPasswordNotification' => $notification);
+                } else {
+                    $notification = $errorMessagePassword . $errorMessageConfirmPassword;
+                    return array('isEditPassword' => false, 'isEditPasswordNotification' => $notification);
+                }
+            } else {
+                return array('isEditPassword' => false, 'isEditPasswordNotification' => $notification);
+            }
+        }
     }
 
 }

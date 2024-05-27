@@ -17,7 +17,7 @@ class RegisterController
         return array('isValidUsername' => $isValidUsername, 'errorMessageUsername' => $errorMessageUsername);
     }
 
-    private static function checkPassword(string $password): array
+    protected static function checkPassword(string $password): array
     {
         $minLength = 6;
         $isValidPassword = false;
@@ -42,7 +42,7 @@ class RegisterController
         return array('isValidPassword' => $isValidPassword, 'errorMessagePassword' => $errorMessagePassword);
     }
 
-    private static function checkConfirmPassword(string $password, string $confirmPassword): array
+    protected static function checkConfirmPassword(string $password, string $confirmPassword): array
     {
         $isValidConfirmPassword = $password == $confirmPassword;
         $errorMessageConfirmPassword = "";
@@ -130,6 +130,7 @@ class RegisterController
 
         }
     }
+
 
 
 }
