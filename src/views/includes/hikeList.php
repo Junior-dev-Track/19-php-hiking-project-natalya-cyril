@@ -151,6 +151,11 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
             <p>Elevation Gain: <?php echo $hike['elevation_gain']; ?> meters</p>
             <p>Created At: <?php echo $hike['created_at']; ?></p>
             <?php $hikeTags = Hikes::getHikeTags($hike['id']); ?>
+
+            <?php $hikeDetails = Hikes::getHikeDetails($hike['id']); ?>
+<!--            <div class="hike p-4 border border-gray-200 rounded-lg shadow-lg">-->
+                <img src="<?php echo $hikeDetails['picture_url']; ?>" alt="Hike Image" class="w-full h-48 my-5 object-cover rounded-lg">
+<!--            </div>-->
             <p>Tags:
                 <?php foreach ($hikeTags as $tag): ?>
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
@@ -158,7 +163,6 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
                     </span>
                 <?php endforeach; ?>
             </p>
-            <img src="<?php echo $hikeDetails['picture_url']; ?>" alt="Hike Image" class="w-full h-48 object-cover rounded-lg">
         </div>
     <?php endforeach; ?>
 </div>
