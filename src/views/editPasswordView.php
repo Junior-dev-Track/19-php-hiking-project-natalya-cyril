@@ -1,6 +1,8 @@
 <?php
 include 'includes/header.php';
 use Controllers\AuthController as Auth;
+
+Auth::EditPassword();
 ?>
 
 <main>

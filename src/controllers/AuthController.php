@@ -111,5 +111,10 @@ class AuthController extends RegisterController
         header('Location: /login');
     }
 
+    public static function editPassword()
+    {
+        echo 'edit password';
+    }
+
 }
 
