@@ -47,4 +47,30 @@ class Hikes extends Database
         return $tags;
     }
 
+    public static function getHikesByTag(string $tag, int $page = 1, int $itemsPerPage = 6): array
+    {
+        $offset = ($page - 1) * $itemsPerPage;
+        $database = new self();
+
+        // SQL query to get hikes filtered by tag
+        $sql = "SELECT Hikes.* FROM Hikes 
+            JOIN HikeTags ON Hikes.id = HikeTags.hike_id 
+            JOIN Tags ON HikeTags.tag_id = Tags.ID 
+            WHERE Tags.tag_name = :tag 
+            LIMIT :offset, :itemsPerPage";
+
+        // Prepare and execute the query
+        $stmt = $database->query($sql, [
+            ':tag' => $tag,
+            ':offset' => $offset,
+            ':itemsPerPage' => $itemsPerPage
+        ]);
+
+        // Return the results
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
 }
