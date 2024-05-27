@@ -7,7 +7,7 @@ use Models\Hikes;
 class HikesController
 {
     public  static function test(){
-        echo 'test';
+        echo 'tags controller test';
 
     }
 
@@ -16,5 +16,8 @@ class HikesController
         $hikesModel = new Hikes();
         return $hikesModel->getAllNames($page);
     }
-    
+    public static function getHikesByTag(string $tag, int $page = 1, int $itemsPerPage = 6): array
+    {
+        return Hikes::getHikesByTag($tag, $page, $itemsPerPage);
+    }
 }
