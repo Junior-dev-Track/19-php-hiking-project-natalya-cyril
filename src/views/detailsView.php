@@ -36,6 +36,7 @@ echo "<p>Created At: " . $hikeDetails['created_at'] . "</p>";
 echo "<p>Updated At: " . $hikeDetails['updated_at'] . "</p>";
 echo "<p>User: " . $hikeDetails['user_id'] . "</p>";
 echo "<p>User Name: " . $userDetails['username'] . "</p>";
+echo "<img src='" . $userDetails['profile_picture'] . "' alt='Profile Picture' class='rounded-full' width='100' height='100'>";
 
 // Display the image from the Hikes table
 echo "<img src='" . $hikeDetails['picture_url'] . "' alt='Hike Image' width='500' height='300'>";
