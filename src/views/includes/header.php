@@ -18,7 +18,7 @@
 
 <header class="flex justify-between">
     <div class="uppercase font-extrabold text-xl p-3 text-lime-900">
-        <a href="/">Wonderlust</a>
+        <a class="font-vollkorn font-extrabold " href="/">Wonderlust</a>
     </div>
     <?php
     include 'nav.php';
