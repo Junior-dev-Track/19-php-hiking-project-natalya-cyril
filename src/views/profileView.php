@@ -56,7 +56,6 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Delete</button>
                             </form>
 
-
                         </li>
                     <?php endforeach; ?>
                 </ul>
