@@ -23,44 +23,47 @@ if ($hikeDetails === null) {
 //    echo "<h1>Hike details</h1>";
 ?>
 
-<h2 class="flex justify-start gap-1">
-<a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="text-primary-200 mx-2">
-    <span class="material-symbols-outlined">
-        arrow_back_ios
-    </span>
-</a>
-<p class='text-xl font-bold  '><?= $hikeDetails['name']; ?></p>
-</h2>
+<main class="flex-1 flex flex-col justify-center items-center">
 
-<div class="flex flex-col bg-white mx-10 px-10 py-5 rounded-l shadow-sm">
+<div class="flex justify-between w-11/12">
+    <img src="<?= $hikeDetails['picture_url']; ?>" alt="Hike Image" class=" w-1/3 object-cover object-bottom rounded-s">
 
-<p><?=$hikeDetails['description']; ?></p>
+    <section class="flex flex-col bg-white px-10 py-5  rounded-e-l shadow-sm">
 
-<div class="hikesInfosBar">
-    <div class="hikesInfo">
-                    <span class="material-symbols-outlined">
-                        distance
-                    </span>
-        <p><?php echo $hikeDetails['distance']; ?> km</p>
-    </div>
+        <h2 class="flex justify-start gap-1 mb-3">
+            <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="text-primary-200 mx-2">
+            <span class="material-symbols-outlined">
+                arrow_back_ios
+            </span>
+                    </a>
+            <p class='text-2xl font-bold text-primary-200  '><?= $hikeDetails['name']; ?></p>
+        </h2>
 
-    <div class="hikesInfo">
-                    <span class="material-symbols-outlined">
-                        timer
-                    </span>
-        <p> <?php echo $hikeDetails['duration']; ?> hours </p>
-    </div>
-    <div class="hikesInfo">
-                    <span class="material-symbols-outlined">
-                        altitude
-                    </span>
-        <p><?php echo $hikeDetails['elevation_gain']; ?> m</p>
-    </div>
-</div>
-</div>
+        <p class="mb-5"><?=$hikeDetails['description']; ?></p>
 
+        <div class="hikesInfosBar">
+            <div class="hikesInfo">
+                            <span class="material-symbols-outlined">
+                                distance
+                            </span>
+                <p><?php echo $hikeDetails['distance']; ?> km</p>
+            </div>
 
-        <iframe class='w-11/12 mt-10 my-10 rounded-3xl self-center'
+            <div class="hikesInfo">
+                            <span class="material-symbols-outlined">
+                                timer
+                            </span>
+                <p> <?php echo $hikeDetails['duration']; ?> hours </p>
+            </div>
+            <div class="hikesInfo">
+                            <span class="material-symbols-outlined">
+                                altitude
+                            </span>
+                <p><?php echo $hikeDetails['elevation_gain']; ?> m</p>
+            </div>
+        </div>
+
+        <iframe class='w-11/12 my-10 rounded-3xl self-center'
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53147.006939295585!2d-84.67094710692703!3d33.639332613621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f4fc2a15298593%3A0xa3f9172e00fafefa!2sForest%20Park%2C%20G%C3%A9orgie%2C%20%C3%89tats-Unis!5e0!3m2!1sfr!2sbe!4v1716924927224!5m2!1sfr!2sbe'
                 width='400' height='400'
                 style='border:0;'
@@ -68,14 +71,18 @@ if ($hikeDetails === null) {
                 loading='lazy'
                 referrerpolicy='no-referrer-when-downgrade'>
         </iframe>
+    </section>
+
+
+</div>
 
 
 
-<div class="flex flex-col bg-white m-10 px-10 py-5 rounded-l shadow-sm">
+<section class=" w-11/12 flex flex-col bg-white m-10 px-10 py-5 rounded-l shadow-sm">
     <div class="flex gap-5 justify-start items-center">
         <img src="<?= $userDetails['profile_picture']; ?>" alt="Hike Image" class=" w-20 h-20  object-cover object-top rounded-full">
         <div class="">
-            <p class="font-radio text-xl"><?=$userDetails['username']; ?> </p>
+            <p class="text-xl"><?=$userDetails['username']; ?> </p>
             <p>Total hikes: 30</p>
         </div>
         <p class="bg-customWhite p-4 rounded-xl font-vollkorn text-primary-100 italic my-3 flex-1">\"Mountains are the beginning and the end of all landscapes.\"</p>
@@ -91,16 +98,8 @@ if ($hikeDetails === null) {
 
 
 
-</div>
-
-
-
-
-
-
-
-
-
+</section>
+</main>
 
 
 
@@ -132,15 +131,15 @@ if ($hikeDetails === null) {
 <!--        </div>-->
 
 
-<!---->
-<!---->
+
+
 <!--    </div>-->
-<!---->
-<!---->
-<!---->
+
+
+
 <!--</div>-->
-<!---->
-<!---->
+
+
 
 
 
