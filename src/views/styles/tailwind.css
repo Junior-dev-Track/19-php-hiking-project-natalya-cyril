@@ -37,7 +37,7 @@
 }
 
 .hikesInfosBar {
-    @apply flex flex-wrap gap-1 mt-1 text-xs;
+    @apply flex flex-wrap gap-1 my-3 text-xs;
     .hikesInfo {
        @apply flex justify-center items-center;
         span {
@@ -90,7 +90,7 @@
     @apply flex flex-col gap-1 mb-3 ;
 
     .authFormField {
-        @apply bg-customWhite text-white placeholder-customWhite p-5 rounded-lg py-1 px-5 ;
+        @apply bg-customWhite text-primary-100 placeholder-customWhite p-5 rounded-lg py-1 px-5 ;
     }
 }
 
