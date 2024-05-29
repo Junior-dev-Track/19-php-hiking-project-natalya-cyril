@@ -2,13 +2,19 @@
 include 'includes/header.php';
 ?>
 
-    <main>
-        <section class="">
-        <h2 class="mb-4 text-3xl font-extrabold text-gray-600 dark:text-white md:text-5xl lg:text-6xl text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Welcome to Wonderlust where the trail meets inspiration.</span> </h2>
-        </section>
+    <h2 class="text-6xl font-extrabold text-customWhite px-5 pb-12 pt-36 font-radio">Welcome to Wonderlust where the trail meets inspiration. </h2>
 
+<?php
+$uri = $_SERVER['REQUEST_URI'];
 
+if (preg_match('/^\/(\?|home)?(\?.*)?$/', $uri)):
+?>
 
+    </section>
+<?php endif; ?>
+
+<!--flex flex-col justify-center-->
+    <main class="w-screen overflow-hidden flex flex-col justify-between items-center">
         <?php
         include 'includes/hikeList.php';
         ?>

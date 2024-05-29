@@ -21,7 +21,7 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
 ?>
 
 <!--    <h2>List of hikes</h2>-->
-<section class="flex justify-around">
+<section class=" w-5/6 flex justify-around m-4">
 
     <!--  EASY  -->
     <div class="tagsButton">
@@ -102,59 +102,69 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
 
 </section>
 
-<section class="mt-8 grid grid-cols-4 gap-5 px-5">
+<section class="grid grid-cols-3 gap-x-10 gap-y-5 px-4">
     <?php foreach ($hikeNames as $hike): ?>
         <?php $hikeDetails = Hikes::getHikeDetails($hike['id']); ?>
 
-        <img src="<?php echo $hikeDetails['picture_url']; ?>" alt="Hike Image" class="w-full h-48 my-5 object-cover rounded-lg">
+        <a href="details?id=<?php echo $hike['id']; ?>">
+        <div class="min-w-[200px] overflow-hidden flex flex-col items-center h-80 bg-white rounded-xl flex">
+            <img src="<?php echo $hikeDetails['picture_url']; ?>" alt="Hike Image" class="w-full h-40 object-cover rounded-t-xl">
 
-        <div class=" p-4 bg-white rounded-3xl shadow-lg">
-            <h3 class="text-lg font-semibold">
-                <a href="details?id=<?php echo $hike['id']; ?>" class="text-blue-500 hover:underline">
+            <h3 class="font-vollkorn font-bold text-xl text-primary-200 mt-3">
                     <?php echo $hike['name']; ?>
-                </a>
             </h3>
-            <p>Distance: <?php echo $hike['distance']; ?> km</p>
-            <p>Duration: <?php echo $hike['duration']; ?> hours</p>
-            <p>Elevation Gain: <?php echo $hike['elevation_gain']; ?> meters</p>
-            <p>Created At: <?php echo $hike['created_at']; ?></p>
+
+            <div class="hikesInfosBar">
+                <div class="hikesInfo">
+                    <span class="material-symbols-outlined">
+                        distance
+                    </span>
+                    <p><?php echo $hike['distance']; ?> km</p>
+                </div>
+
+                <div class="hikesInfo">
+                    <span class="material-symbols-outlined">
+                        timer
+                    </span>
+                    <p> <?php echo $hike['duration']; ?> hours </p>
+                </div>
+                <div class="hikesInfo">
+                    <span class="material-symbols-outlined">
+                        altitude
+                    </span>
+                    <p><?php echo $hike['elevation_gain']; ?> m</p>
+                </div>
+            </div>
+
             <?php $hikeTags = Hikes::getHikeTags($hike['id']); ?>
 
-<!--            <div class="hike p-4 border border-gray-200 rounded-lg shadow-lg">-->
-<!--            </div>-->
-            <p>
+            <ul class="hikesTagsBar">
                 <?php foreach ($hikeTags as $tag): ?>
-                    <span class="inline-block bg-secondary-25 rounded-full px-3 py-1 text-slate-400 text-xs font-sono">
+                    <li class="hikesTag">
                         <?php echo $tag['tag_name']; ?>
-                    </span>
+                    </li>
                 <?php endforeach; ?>
+            </ul>
+
+            <p class="text-xs pt-6 self-end mr-1 text-slate-300">
+                <?php echo $hike['created_at']; ?>
             </p>
         </div>
+        </a>
     <?php endforeach; ?>
+
+
+
 </section>
 
-
-<?php //foreach ($hikeNames as $hike): ?>
-<!--    <h3><a href="details?id=--><?php //echo $hike['id']; ?><!--">--><?php //echo $hike['name']; ?><!--</a>-->
-<!--        - --><?php //echo $hike['distance']; ?><!-- km-->
-<!--        - Duration: --><?php //echo $hike['duration']; ?><!-- hours-->
-<!--        - Elevation Gain: --><?php //echo $hike['elevation_gain']; ?><!-- meters-->
-<!--        - Created At: --><?php //echo $hike['created_at']; ?>
-<!--    </h3>-->
-<!--    --><?php //$hikeTags = Hikes::getHikeTags($hike['id']); ?>
-<!--    <p>Tags:-->
-<!--        --><?php //foreach ($hikeTags as $tag): ?>
-<!--            --><?php //echo $tag['tag_name']; ?>
-<!--        --><?php //endforeach; ?>
-<!--    </p>-->
-<!--    <img src='" . $hikeDetails['picture_url'] . "' alt='Hike Image' width='500' height='300'>";-->
-<!--    <br>-->
-<?php //endforeach; ?>
-
-<?php for ($i = 1; $i <= $totalPages; $i++): ?>
-    <a href='?page=<?php echo $i; ?>'><?php echo $i; ?></a>
-<?php endfor; ?>
-
-<?php for ($i = 1; $i <= $totalPages; $i++): ?>
-    <a href='?page=<?php echo $i; ?><?php echo $selectedTag ? "&tag=$selectedTag" : ""; ?>'><?php echo $i; ?></a>
-<?php endfor; ?>
+<aside class="pages">
+    <ul>
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <li >
+                <a href='?page=<?php echo $i; ?>'>
+                    <span><?php echo $i; ?></span>
+                </a>
+            </li>
+        <?php endfor; ?>
+    </ul>
+</aside>

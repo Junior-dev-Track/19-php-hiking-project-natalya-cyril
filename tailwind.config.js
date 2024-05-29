@@ -7,19 +7,29 @@ module.exports = {
   theme: {
 
     extend: {
+
+        userSelect: {
+            'none': 'none',
+            'text': 'text',
+            'all': 'all',
+            'auto': 'auto',
+        },
+
         colors: {
             'primary': {
-                '50': '#1F4373',
-                '100': '#012840'
+                '50': '#A0D94A',
+                '100': '#81A632',
+                '200': '#617320'
             },
             'secondary': {
-                '25': '#F0FAFF',
-                '50': '#8F9AD9',
-                '100': '#5A73BF',
+                '50': '#D9CF48',
+                '100': '#D9C14A',
+                '200': '#F2A81D',
+                '300': '#F28705'
             },
             'accent' :'#F29057',
-            'customWhite': '#FCFFFF',
-            'customBlack': '#001E35'
+            'customWhite': '#F2F2E4',
+            'customBlack': '#260101'
 
         },
         fontFamily: {
@@ -31,6 +41,8 @@ module.exports = {
 
     },
   },
-  plugins: [],
+  plugins: [
+      require('tailwind-scrollbar'),
+  ],
 }
 
