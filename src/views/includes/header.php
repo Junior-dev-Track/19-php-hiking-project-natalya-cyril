@@ -10,15 +10,17 @@
 
     <meta charset="UTF-8">
     <title>Wonderlust</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link href="/css/tailwind.css" rel="stylesheet">
 </head>
 
 
-<body class="bg-amber-50 text-gray-900">
+<body class="bg-customWhite text-customBlack">
 
-<header class="flex justify-between">
-    <div class="uppercase font-extrabold text-xl p-3 text-lime-900">
-        <a class="font-vollkorn font-extrabold " href="/">Wonderlust</a>
+<header class="flex justify-between p-3">
+    <div class="uppercase font-vollkorn text-primary-50 font-extrabold text-xl">
+        <a href="/">Wonderlust</a>
     </div>
     <?php
     include 'nav.php';

@@ -1,5 +1,5 @@
 <nav class="flex ">
-    <ul class="flex space-x-5 uppercase">
+    <ul class="links">
         <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] ) : ?>
             <li> <a href="/logout">Logout</a></li>
             <li><a href="/profile">Profile</a></li>

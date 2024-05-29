@@ -1,7 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Sono:wght@200..800&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+
+.material-icons {
+    color: white ;
+    font-size: 1rem;
+}
+
+.links {
+    @apply flex space-x-5;
+    a{
+        @apply  uppercase font-radio text-secondary-100 text-xs hover:text-accent active:text-secondary-50;
+    }
+}
+.tagsButton {
+    @apply h-fit w-fit px-1.5 py-3 bg-secondary-100 rounded-2xl hover:bg-accent active:bg-secondary-50;
+    span {
+     @apply flex w-10 justify-around;
+    }
+
+
+}

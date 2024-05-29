@@ -9,15 +9,16 @@ module.exports = {
     extend: {
         colors: {
             'primary': {
-                '50': '#8F9AD9',
-                '100': '#5A73BF',
-            },
-            'secondary': {
                 '50': '#1F4373',
                 '100': '#012840'
             },
+            'secondary': {
+                '25': '#F0FAFF',
+                '50': '#8F9AD9',
+                '100': '#5A73BF',
+            },
             'accent' :'#F29057',
-            'customWhite': '#F0FAFF',
+            'customWhite': '#FCFFFF',
             'customBlack': '#001E35'
 
         },
