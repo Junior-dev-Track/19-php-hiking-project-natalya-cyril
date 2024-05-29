@@ -32,4 +32,11 @@ class HikesController
         $hikesModel = new Hikes();
         return $hikesModel->getHikesByUser($userId, $page);
     }
+
+    public static function deleteHike(int $hikeId): void
+    {
+        $hikesModel = new Hikes();
+        $hikesModel->deleteHikeById($hikeId);
+    }
+
 }

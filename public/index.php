@@ -74,8 +74,23 @@ $router->map('POST', '/editPassword', function() {
     require __DIR__ . "/../src/views/editPasswordView.php";
 });
 
+// Delete Hike
+//$router->map('POST', '/deleteHike', function() {
+//    require __DIR__ . "/../src/views/deleteHikeView.php";
+//});
 
-
+// Delete Hike
+$router->map('POST', '/deleteHike', function() {
+    $hikeId = $_POST['hikeId'] ?? null;
+    if ($hikeId) {
+        \Controllers\HikesController::deleteHike((int)$hikeId);
+        header('Location: /profile');
+        exit();
+    } else {
+        // Handle the error, e.g., show an error message
+        echo "No hikeId provided";
+    }
+});
 // match current request
 $match = $router->match();
 
