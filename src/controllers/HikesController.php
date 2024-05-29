@@ -20,4 +20,10 @@ class HikesController
     {
         return Hikes::getHikesByTag($tag, $page, $itemsPerPage);
     }
+
+    public static function getHikesByUser(int $userId): array
+    {
+        $hikesModel = new Hikes();
+        return $hikesModel->getHikesByUser($userId);
+    }
 }

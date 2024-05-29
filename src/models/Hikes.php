@@ -69,8 +69,20 @@ class Hikes extends Database
         // Return the results
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getHikesByUser(int $userId): array
+    {
+        $database = new self();
+        $stmt = $database->query("SELECT * FROM hikes WHERE user_id = :userId", ['userId' => $userId]);
+        $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $hikes;
+    }
 
-
+    public static function deleteHikeById(int $id): bool
+    {
+        $database = new self();
+        $stmt = $database->query("DELETE FROM Hikes WHERE id = :id", ['id' => $id]);
+        return $stmt->rowCount() > 0;
+    }
 
 
 }
