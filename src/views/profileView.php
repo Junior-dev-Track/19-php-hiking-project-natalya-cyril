@@ -50,6 +50,13 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
                             Name: <?= htmlspecialchars($hike['name'], ENT_QUOTES, 'UTF-8') ?><br>
                             Distance: <?= htmlspecialchars($hike['distance'], ENT_QUOTES, 'UTF-8') ?> km<br>
                             Date: <?= htmlspecialchars($hike['created_at'], ENT_QUOTES, 'UTF-8') ?><br>
+                            <!-- Delete button -->
+                            <form action="/deleteHike" method="post">
+                                <input type="hidden" name="hikeId" value="<?= $hike['id'] ?>">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Delete</button>
+                            </form>
+
+
                         </li>
                     <?php endforeach; ?>
                 </ul>
