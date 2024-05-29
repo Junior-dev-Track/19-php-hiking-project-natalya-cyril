@@ -39,4 +39,23 @@ class HikesController
         $hikesModel->deleteHikeById($hikeId);
     }
 
+    public static function updateHike(array $newData): void
+    {
+        $hikesModel = new Hikes();
+        $hikeId = $newData['hikeId'] ?? null;
+        if ($hikeId) {
+            // Print out the $newData array
+            error_log(print_r($newData, true));
+            $hikesModel->updateHikeById($hikeId, $newData);
+        } else {
+            // Handle the error, e.g., throw an exception
+            throw new \Exception("No hikeId provided");
+        }
+    }
+
+    public static function getHikeById(int $hikeId): ?array
+    {
+        $hikesModel = new Hikes();
+        return $hikesModel->getHikeById($hikeId);
+    }
 }

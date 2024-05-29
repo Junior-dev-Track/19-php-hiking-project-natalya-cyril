@@ -74,10 +74,13 @@ $router->map('POST', '/editPassword', function() {
     require __DIR__ . "/../src/views/editPasswordView.php";
 });
 
-// Delete Hike
-//$router->map('POST', '/deleteHike', function() {
-//    require __DIR__ . "/../src/views/deleteHikeView.php";
-//});
+// Edit Hike
+$router->map('GET', '/editHike', function() {
+    require __DIR__ . "/../src/views/editHikeView.php";
+});
+$router->map('POST', '/editHike', function() {
+    require __DIR__ . "/../src/views/editHikeView.php";
+});
 
 // Delete Hike
 $router->map('POST', '/deleteHike', function() {
