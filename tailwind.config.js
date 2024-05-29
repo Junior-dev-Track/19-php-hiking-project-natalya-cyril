@@ -44,5 +44,9 @@ module.exports = {
   plugins: [
       require('tailwind-scrollbar'),
   ],
+      safelist: [
+        'homeHeader',
+        'header',
+      ],
 }
 

@@ -23,17 +23,22 @@
 $uri = $_SERVER['REQUEST_URI'];
 if (preg_match('/^\/(\?|home)?(\?.*)?$/', $uri)):
 ?>
-
 <section class="bg-[url('https://images.unsplash.com/photo-1552083375-1447ce886485?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center w-screen h-5/6 shadow ">
-
 <?php endif; ?>
 
-
-<header class="flex justify-between p-3 select-none">
-    <div class="uppercase font-vollkorn text-customWhite font-extrabold text-xl cols-start-1 row-start-1 row-span-1">
-        <a href="/">Wonderlust</a>
-    </div>
     <?php
-    include 'nav.php';
+    if (preg_match('/^\/(\?|home)?(\?.*)?$/', $uri)) {
+        $headerClass = "homeHeader";
+    } else {
+        $headerClass = "header";
+    }
     ?>
-</header>
+
+    <header class="header-wrapper <?php echo $headerClass ?>">
+        <div class="logo">
+            <a href="/">Wonderlust</a>
+        </div>
+        <?php
+        include 'nav.php';
+        ?>
+    </header>

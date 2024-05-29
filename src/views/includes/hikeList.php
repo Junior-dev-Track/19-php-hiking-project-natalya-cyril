@@ -24,81 +24,81 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
 <section class=" w-5/6 flex justify-around m-4">
 
     <!--  EASY  -->
-    <div class="tagsButton">
+    <a href="?tag=Easy" class="tagsButton">
         <span class="material-icons">
             star_outline
         </span>
-    </div>
+    </a>
 
     <!--  MODERATE  -->
-    <div class="tagsButton">
+    <a href="?tag=Moderate" class="tagsButton">
         <span class="material-icons">
             star_half
         </span>
-    </div>
+    </a>
 
     <!--  DIFFICULT  -->
-    <div class="tagsButton">
+    <a href="?tag=Difficult" class="tagsButton">
         <span class="material-icons">
             star
         </span>
-    </div>
+    </a>
 
     <!--  HISTORICAL  -->
-    <div class="tagsButton">
+    <a href="?tag=Historical" class="tagsButton">
         <span class="material-icons">
             stadium
         </span>
-    </div>
+    </a>
 
     <!--  FOREST  -->
-    <div class="tagsButton">
+    <a href="?tag=Forest" class="tagsButton">
         <span class="material-icons">
             forest
         </span>
-    </div>
+    </a>
 
     <!--  WATERFALL -->
-    <div class="tagsButton">
+    <a href="?tag=Waterfall" class="tagsButton">
         <span class="material-icons">
             sailing
         </span>
-    </div>
+    </a>
 
     <!--  BIRDWATCHING  -->
-    <div class="tagsButton">
+    <a href="?tag=Wildflowers" class="tagsButton">
         <span class="material-icons">
-            visibility
+            local_florist
         </span>
-    </div>
+    </a>
 
     <!--  DOG-FRIENDLY  -->
-    <div class="tagsButton">
+    <a href="?tag=Dog-friendly" class="tagsButton">
         <span class="material-icons">
             pets
         </span>
-    </div>
+    </a>
 
     <!--  SCENIC  -->
-    <div class="tagsButton">
+    <a href="?tag=Scenic" class="tagsButton">
         <span class="material-icons">
             vrpano
         </span>
-    </div>
+    </a>
 
     <!--  SPRING/FALL  -->
-    <div class="tagsButton">
+    <a href="?tag=Spring" class="tagsButton">
         <span class="material-icons">
             emoji_nature
         </span>
-    </div>
+    </a>
 
     <!--  SUMMER  -->
-    <div class="tagsButton">
+    <a href="?tag=Summer" class="tagsButton">
         <span class="material-icons">
             beach_access
         </span>
-    </div>
+    </a>
 
 </section>
 

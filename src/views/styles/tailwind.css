@@ -9,6 +9,26 @@
     font-size: 1rem;
 }
 
+.header-wrapper {
+    @apply flex justify-between p-3 select-none;
+}
+
+.homeHeader.header-wrapper {
+    /*@apply bg-secondary-200;*/
+    .logo {
+        @apply uppercase font-vollkorn text-customWhite font-extrabold text-xl
+    }
+}
+
+.header.header-wrapper {
+    .logo {
+        @apply uppercase font-vollkorn text-primary-200 font-extrabold text-3xl;
+    }
+    a {
+        @apply text-primary-200;
+    }
+}
+
 .links {
     @apply flex space-x-5;
     a{
@@ -56,8 +76,4 @@
             }
         }
     }
-
-    /*a {*/
-    /*    @apply bg-primary-200 rounded-full text-xs hover:text-accent active:text-primary-200;*/
-    /*}*/
 }
