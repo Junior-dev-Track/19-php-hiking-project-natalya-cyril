@@ -3,7 +3,7 @@ include 'includes/header.php';
 
 use Controllers\HikesController;
 
-$hikes = HikesController::getHikeNames();
+$hikes = HikesController::getHikeUsers($_SESSION['id']);
 
 if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
     header('Location: /login');
