@@ -18,7 +18,7 @@
 </head>
 
 
-<body class="bg-customWhite text-customBlack flex flex-col overflow-x-hidden ">
+<body class="min-h-screen justify-between bg-customWhite text-customBlack font-radio text-customBlack flex flex-col overflow-x-hidden scrollbar-none">
 <?php
 $uri = $_SERVER['REQUEST_URI'];
 if (preg_match('/^\/(\?|home)?(\?.*)?$/', $uri)):

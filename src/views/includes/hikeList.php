@@ -102,12 +102,12 @@ $totalPages = ceil($totalHikes / $itemsPerPage);
 
 </section>
 
-<section class="grid grid-cols-3 gap-x-10 gap-y-5 px-4">
+<section class="w-fit overflow-x-hidden grid grid-cols-3 gap-x-10 gap-y-5 px-4">
     <?php foreach ($hikeNames as $hike): ?>
         <?php $hikeDetails = Hikes::getHikeDetails($hike['id']); ?>
 
         <a href="details?id=<?php echo $hike['id']; ?>">
-        <div class="min-w-[200px] overflow-hidden flex flex-col items-center h-80 bg-white rounded-xl flex">
+        <div class="min-w-[100px] overflow-hidden flex flex-col items-center h-80 bg-white rounded-xl flex shadow-sm">
             <img src="<?php echo $hikeDetails['picture_url']; ?>" alt="Hike Image" class="w-full h-40 object-cover rounded-t-xl">
 
             <h3 class="font-vollkorn font-bold text-xl text-primary-200 mt-3">
