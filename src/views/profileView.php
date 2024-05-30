@@ -28,6 +28,10 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
                     <br>
                     <a href="/editPassword" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Change Password</a>
                 </div>
+
+                <div>
+                    <a href="/addHike" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Add Hike</a>
+                </div>
             </div>
 
             <div class="profile-info flex flex-col justify-center ml-4">

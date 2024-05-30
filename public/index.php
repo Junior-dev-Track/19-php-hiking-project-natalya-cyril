@@ -81,6 +81,23 @@ $router->map('GET', '/editHike', function() {
 $router->map('POST', '/editHike', function() {
     require __DIR__ . "/../src/views/editHikeView.php";
 });
+// Add Hike
+$router->map('GET', '/addHike', function() {
+    require __DIR__ . "/../src/views/addHikeView.php";
+});
+$router->map('POST', '/addHike', function() {
+    // Handle the form submission to add a new hike
+    $hikeData = $_POST;
+    try {
+        \Controllers\HikesController::addHike($hikeData);
+        // Redirect to a success page or the profile page after successful addition
+        header('Location: /profile');
+        exit();
+    } catch (\Exception $e) {
+        // Handle the error, e.g., show an error message
+        echo $e->getMessage();
+    }
+});
 
 // Delete Hike
 $router->map('POST', '/deleteHike', function() {

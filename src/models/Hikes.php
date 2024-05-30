@@ -115,5 +115,29 @@ class Hikes extends Database
         // Return true if the update was successful
         return $stmt->rowCount() > 0;
     }
+    public static function addHike(array $hikeData): bool
+    {
+        $database = new self();
+
+        // Prepare the SQL insert statement
+        $sql = "INSERT INTO Hikes (name, distance, duration, elevation_gain, description, user_id, created_at, updated_at)
+                VALUES (:name, :distance, :duration, :elevation_gain, :description, :user_id, NOW(), NOW())";
+
+        // Bind parameters
+        $params = [
+            ':name' => $hikeData['name'],
+            ':distance' => $hikeData['distance'],
+            ':duration' => $hikeData['duration'],
+            ':elevation_gain' => $hikeData['elevation_gain'],
+            ':description' => $hikeData['description'],
+            ':user_id' => $hikeData['user_id']
+        ];
+
+        // Execute the query
+        $stmt = $database->query($sql, $params);
+
+        // Return true if the insert was successful
+        return $stmt->rowCount() > 0;
+    }
 
 }

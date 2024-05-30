@@ -58,4 +58,21 @@ class HikesController
         $hikesModel = new Hikes();
         return $hikesModel->getHikeById($hikeId);
     }
+// Add the addHike method
+    public static function addHike(array $hikeData): void
+    {
+        $hikesModel = new Hikes();
+
+        // Validation on $hikeData
+        // if (empty($hikeData['name'])) {
+        //     throw new \Exception("Hike name is required");
+        // }
+
+        if (Hikes::addHike($hikeData)) {
+            // Hike was successfully added
+        } else {
+            throw new \Exception("Failed to add hike");
+        }
+    }
+
 }
