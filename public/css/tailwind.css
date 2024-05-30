@@ -592,6 +592,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .mb-5{
   margin-bottom: 1.25rem;
 }
@@ -610,10 +614,6 @@ video {
 
 .mt-3{
   margin-top: 0.75rem;
-}
-
-.mb-4{
-  margin-bottom: 1rem;
 }
 
 .mt-4{
@@ -656,6 +656,10 @@ video {
   height: 10rem;
 }
 
+.h-48{
+  height: 12rem;
+}
+
 .h-5\/6{
   height: 83.333333%;
 }
@@ -696,6 +700,10 @@ video {
   width: 83.333333%;
 }
 
+.w-\[600px\]{
+  width: 600px;
+}
+
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
@@ -721,12 +729,12 @@ video {
   flex-shrink: 0;
 }
 
-.grid-flow-col{
-  grid-auto-flow: column;
+.resize-none{
+  resize: none;
 }
 
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-flow-col{
+  grid-auto-flow: column;
 }
 
 .grid-cols-3{
@@ -864,6 +872,11 @@ video {
   background-color: rgb(242 242 228 / var(--tw-bg-opacity));
 }
 
+.bg-green-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
 .bg-primary-200{
   --tw-bg-opacity: 1;
   background-color: rgb(97 115 32 / var(--tw-bg-opacity));
@@ -872,11 +885,6 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-green-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\'https\:\/\/images\.unsplash\.com\/photo-1552083375-1447ce886485\?q\=80\&w\=3270\&auto\=format\&fit\=crop\&ixlib\=rb-4\.0\.3\&ixid\=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA\%3D\%3D\'\)\]{
@@ -981,6 +989,11 @@ video {
   line-height: 1;
 }
 
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -994,11 +1007,6 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .font-bold{
@@ -1390,6 +1398,7 @@ video {
 .authFormSection{
   margin-bottom: 0.75rem;
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 0.25rem;
   .authFormField{
@@ -1498,28 +1507,12 @@ video {
     grid-column: span 2 / span 2;
   }
 
-  .md\:mb-0{
-    margin-bottom: 0px;
-  }
-
-  .md\:mt-0{
-    margin-top: 0px;
-  }
-
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\:flex-row{
-    flex-direction: row;
   }
 }
 
 @media (min-width: 1024px){
-  .lg\:col-span-1{
-    grid-column: span 1 / span 1;
-  }
-
   .lg\:col-span-2{
     grid-column: span 2 / span 2;
   }

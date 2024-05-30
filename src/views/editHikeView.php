@@ -35,33 +35,46 @@ if (isset($_GET['hikeId'])) {
 }
 ?>
 
-<main>
-    <h1>Edit Hike</h1>
+<main class="w-screen px-10 flex-1 overflow-hidden flex flex-col justify-center  items-center">
     <?php if (isset($notification)): ?>
         <div class="notification">
             <p><?= htmlspecialchars($notification) ?></p>
         </div>
     <?php endif; ?>
-    <form action="/editHike" method="post">
-        <input type="hidden" name="hikeId" value="<?= htmlspecialchars($hike['id']) ?>">
 
-        <label for="name">Hike Name:</label><br>
-        <input type="text" id="name" name="name" value="<?= htmlspecialchars($hike['name']) ?>"><br>
+    <section class="">
 
-        <label for="distance">Distance:</label><br>
-        <input type="text" id="distance" name="distance" value="<?= htmlspecialchars($hike['distance']) ?>"><br>
+        <form action="/editHike" method="post" class="authForm w-[600px]">
+            <input type="hidden" name="hikeId" value="<?= htmlspecialchars($hike['id']) ?>">
 
-        <label for="duration">Duration:</label><br>
-        <input type="text" id="duration" name="duration" value="<?= htmlspecialchars($hike['duration']) ?>"><br>
+            <div class="authFormSection">
+                <label for="name" class="authLabel" required>Name</label>
+                <input type="text" id="name" name="name" value="<?= htmlspecialchars($hike['name']) ?>" class="authFormField" required>
+            </div>
 
-        <label for="elevation_gain">Elevation Gain:</label><br>
-        <input type="text" id="elevation_gain" name="elevation_gain" value="<?= htmlspecialchars($hike['elevation_gain']) ?>"><br>
+            <div class="authFormSection">
+                <label for="distance" class="authLabel" required>Distance</label>
+                <input type="text" id="distance" name="distance" value="<?= htmlspecialchars($hike['distance']) ?>" class="authFormField" required>
+            </div>
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description"><?= htmlspecialchars($hike['description']) ?></textarea><br>
+            <div class="authFormSection">
+                <label for="duration" class="authLabel" required>Duration</label>
+                <input type="text" id="duration" name="duration" value="<?= htmlspecialchars($hike['duration']) ?>" class="authFormField" required>
+            </div>
 
-        <input type="submit" value="Update Hike">
-    </form>
+            <div class="authFormSection">
+                <label for="elevation_gain" class="authLabel" required>Elevation Gain</label>
+                <input type="text" id="elevation_gain" name="elevation_gain" value="<?= htmlspecialchars($hike['elevation_gain']) ?>" class="authFormField" required>
+            </div>
+
+            <div class="authFormSection">
+                <label for="description" class="authLabel" required>Description</label>
+                <textarea id="description" name="description" class="authFormField resize-none h-48" required><?= htmlspecialchars($hike['description']) ?></textarea>
+            </div>
+
+            <input type="submit" value="Update Hike" class="authButton">
+        </form>
+    </section>
 
 </main>
 

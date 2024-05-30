@@ -87,10 +87,10 @@
 }
 
 .authFormSection {
-    @apply flex flex-col gap-1 mb-3 ;
+    @apply w-full flex flex-col gap-1 mb-3 ;
 
     .authFormField {
-        @apply bg-customWhite text-primary-100 placeholder-customWhite p-5 rounded-lg py-1 px-5 ;
+        @apply bg-customWhite  text-primary-100 placeholder-customWhite p-5 rounded-lg py-1 px-5 ;
     }
 }
 
