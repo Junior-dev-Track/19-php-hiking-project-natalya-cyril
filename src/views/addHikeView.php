@@ -19,37 +19,47 @@ if ($_POST) {
 }
 ?>
 
-<main>
-    <h1>Add Hike</h1>
+<main class="w-screen px-10 flex-1 overflow-hidden flex flex-col justify-center  items-center">
     <?php if (isset($notification)): ?>
         <div class="notification">
             <p><?= htmlspecialchars($notification) ?></p>
         </div>
     <?php endif; ?>
-    <form action="/addHike" method="post">
-        <label for="name">Hike Name:</label><br>
-        <input type="text" id="name" name="name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"><br>
+    <section class="">
+        <form action="/addHike" method="post" class="authForm w-[600px]">
+        <div class="authFormSection">
+            <label for="name" class="authLabel">Name</label>
+            <input type="text" id="name" name="name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" class="authFormField" required>
+        </div>
 
-        <label for="distance">Distance:</label><br>
-        <input type="text" id="distance" name="distance" value="<?= htmlspecialchars($_POST['distance'] ?? '') ?>"><br>
+        <div class="authFormSection">
+            <label for="distance" class="authLabel">Distance</label>
+            <input type="text" id="distance" name="distance" value="<?= htmlspecialchars($_POST['distance'] ?? '') ?>" class="authFormField" required>
+        </div>
 
-        <label for="duration">Duration:</label><br>
-        <input type="text" id="duration" name="duration" value="<?= htmlspecialchars($_POST['duration'] ?? '') ?>"><br>
+        <div class="authFormSection">
+            <label for="duration" class="authLabel">Duration</label>
+            <input type="text" id="duration" name="duration" value="<?= htmlspecialchars($_POST['duration'] ?? '') ?>" class="authFormField" required>
+        </div>
 
-        <label for="elevation_gain">Elevation Gain:</label><br>
-        <input type="text" id="elevation_gain" name="elevation_gain" value="<?= htmlspecialchars($_POST['elevation_gain'] ?? '') ?>"><br>
+        <div class="authFormSection">
+            <label for="elevation_gain" class="authLabel">Elevation Gain:</label>
+            <input type="text" id="elevation_gain" name="elevation_gain" value="<?= htmlspecialchars($_POST['elevation_gain'] ?? '') ?>" class="authFormField" required>
+        </div>
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description"><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea><br>
-
+        <div class="authFormSection">
+            <label for="description" class="authLabel">Description:</label>
+            <textarea id="description" name="description" class="authFormField resize-none h-48" required><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
+        </div>
         <!-- Picture URL Hidden-->
-        <input type="hidden" id="picture_url" name="picture_url" value="<?= htmlspecialchars($_POST['picture_url'] ?? '') ?>"><br>
+        <input type="hidden" id="picture_url" name="picture_url" value="<?= htmlspecialchars($_POST['picture_url'] ?? '') ?>">
 
         <!-- User id Hidden-->
         <input type="hidden" name="user_id" value="<?= htmlspecialchars($_SESSION['id']) ?>">
 
-        <input type="submit" value="Add Hike">
+        <input type="submit" value="Add Hike" class="authButton">
     </form>
+    </section>
 </main>
 
 <?php
