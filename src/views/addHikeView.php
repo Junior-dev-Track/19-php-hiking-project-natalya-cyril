@@ -42,7 +42,10 @@ if ($_POST) {
         <label for="description">Description:</label><br>
         <textarea id="description" name="description"><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea><br>
 
+        <!-- Picture URL Hidden-->
+        <input type="hidden" id="picture_url" name="picture_url" value="<?= htmlspecialchars($_POST['picture_url'] ?? '') ?>"><br>
 
+        <!-- User id Hidden-->
         <input type="hidden" name="user_id" value="<?= htmlspecialchars($_SESSION['id']) ?>">
 
         <input type="submit" value="Add Hike">

@@ -119,8 +119,8 @@ class Hikes extends Database
         $database = new self();
 
         // Prepare the SQL insert statement
-        $sql = "INSERT INTO Hikes (name, distance, duration, elevation_gain, description, user_id, created_at, updated_at)
-                VALUES (:name, :distance, :duration, :elevation_gain, :description, :user_id, NOW(), NOW())";
+        $sql = "INSERT INTO Hikes (name, distance, duration, elevation_gain, description, user_id, created_at, updated_at, picture_url)
+                VALUES (:name, :distance, :duration, :elevation_gain, :description, :user_id, NOW(), NOW(), 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
 
         // Bind parameters
         $params = [
