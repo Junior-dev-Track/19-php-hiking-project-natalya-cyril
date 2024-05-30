@@ -69,11 +69,10 @@ class Hikes extends Database
         // Return the results
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getHikesByUser(int $userId, int $page = 1, int $itemsPerPage = 6): array
+    public function getHikesByUser(int $userId): array
     {
         $database = new self();
-        $offset = ($page - 1) * $itemsPerPage;
-        $stmt = $database->query("SELECT * FROM Hikes WHERE user_id = :userId LIMIT :limit OFFSET :offset", ['userId' => $userId, 'limit' => $itemsPerPage, 'offset' => $offset]);
+        $stmt = $database->query("SELECT * FROM Hikes WHERE user_id = :userId", [':userId' => $userId]);
         $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $hikes;
     }

@@ -16,77 +16,53 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
     <h1>Profile</h1>
 
     <p>START</p>
-    <div class="tailwind grid grid-cols-2 gap-4">
-        <div class="profile-container column_1 flex rounded-lg shadow-lg">
-            <div>
-                <div>
-                    <img src="<?= htmlspecialchars($_SESSION['profilePicture'], ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Picture" width="150" height="130">
-
-                </div>
-               <div class="profile-actions">
+    <div class="tailwind grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+        <!-- Profile Section -->
+        <div class="profile-container flex rounded-lg shadow-lg p-4 bg-white md:col-span-1 lg:col-span-2">
+            <!-- Profile Picture and Actions -->
+            <div class="flex-shrink-0 flex items-center space-x-4">
+                <img src="<?= htmlspecialchars($_SESSION['profilePicture'], ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Picture" width="150" height="130" class="rounded-full">
+                <div class="profile-actions flex flex-col">
                     <a href="/editProfile" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit Profile</a>
-                    <br>
-                    <a href="/editPassword" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Change Password</a>
-                </div>
-
-                <div>
-                    <a href="/addHike" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Add Hike</a>
+                    <a href="/editPassword" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2">Change Password</a>
+                    <a href="/addHike" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mt-2">Add Hike</a>
                 </div>
             </div>
-
-            <div class="profile-info flex flex-col justify-center ml-4">
-                <h2>Profile Information</h2>
+            <!-- Profile Information -->
+            <div class="profile-info flex-1 flex flex-col justify-center ml-4">
+                <h2 class="text-lg font-semibold">Profile Information</h2>
                 <p>Username: <?= $_SESSION['username'] ?></p>
                 <p>Role: <?= $_SESSION['role'] ?></p>
                 <p>First name: <?= $_SESSION['firstname'] ?></p>
                 <p>Last name: <?= $_SESSION['lastname'] ?></p>
                 <p>Email: <?= $_SESSION['email'] ?></p>
-<!--                <p>User ID: --><?php //= $_SESSION['id'] ?><!--</p>-->
             </div>
-
         </div>
 
-            <div class="list-container rounded-lg shadow-lg border-gray-200 column_2">
-                <p>List of Hikes</p>
-                <ul>
-                    <?php foreach ($hikes as $hike): ?>
-                        <li>
-                            Name: <?= htmlspecialchars($hike['name'], ENT_QUOTES, 'UTF-8') ?><br>
-                            Distance: <?= htmlspecialchars($hike['distance'], ENT_QUOTES, 'UTF-8') ?> km<br>
-                            Date: <?= htmlspecialchars($hike['created_at'], ENT_QUOTES, 'UTF-8') ?><br>
-                            <!-- Update button -->
-                            <a href="/editHike?hikeId=<?= $hike['id'] ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Update Hike</a>
-
-                            <!-- Delete button -->
-                            <form action="/deleteHike" method="post">
-                                <input type="hidden" name="hikeId" value="<?= $hike['id'] ?>">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Delete</button>
-                            </form>
-
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- List of Hikes Section -->
+        <div class="list-container rounded-lg shadow-lg border-gray-200 p-4 bg-white md:col-span-2 lg:col-span-2 mt-4">
+            <h2 class="text-lg font-semibold">List of Hikes</h2>
+            <ul>
+                <?php foreach ($hikes as $hike): ?>
+                    <li class="mb-4">
+                        <p>Name: <?= htmlspecialchars($hike['name'], ENT_QUOTES, 'UTF-8') ?></p>
+                        <p>Distance: <?= htmlspecialchars($hike['distance'], ENT_QUOTES, 'UTF-8') ?> km</p>
+                        <p>Date: <?= date('Y-m-d', strtotime($hike['created_at'])) ?></p>
+                        <!-- Update button -->
+                        <a href="/editHike?hikeId=<?= $hike['id'] ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Update Hike</a>
+                        <!-- Delete button -->
+                        <form action="/deleteHike" method="post" class="inline-block">
+                            <input type="hidden" name="hikeId" value="<?= $hike['id'] ?>">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Delete</button>
+                        </form>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
     <p>END</p>
-<!--    <div class="tailwind grid">-->
+
+    <!--    <div class="tailwind grid">-->
 <!--    <div class="profile-container column_1">-->
 <!--        <div>-->
 <!--            <img src="--><?php //= htmlspecialchars($_SESSION['profilePicture'], ENT_QUOTES, 'UTF-8'); ?><!--" alt="Profile Picture" width="150" height="130">-->

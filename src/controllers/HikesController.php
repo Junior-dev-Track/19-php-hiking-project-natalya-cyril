@@ -63,10 +63,19 @@ class HikesController
     {
         $hikesModel = new Hikes();
 
+        // Get the user ID from the session
+        $userId = $_SESSION['id'] ?? null;
+        if (!$userId) {
+            throw new \Exception("User is not logged in");
+        }
+
+        // Add the user ID to the hike data
+        $hikeData['user_id'] = $userId;
+
         // Validation on $hikeData
-        // if (empty($hikeData['name'])) {
-        //     throw new \Exception("Hike name is required");
-        // }
+         if (empty($hikeData['name'])) {
+             throw new \Exception("Hike name is required");
+         }
 
         if (Hikes::addHike($hikeData)) {
             // Hike was successfully added
