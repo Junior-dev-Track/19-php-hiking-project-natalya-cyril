@@ -50,6 +50,9 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
                             Name: <?= htmlspecialchars($hike['name'], ENT_QUOTES, 'UTF-8') ?><br>
                             Distance: <?= htmlspecialchars($hike['distance'], ENT_QUOTES, 'UTF-8') ?> km<br>
                             Date: <?= htmlspecialchars($hike['created_at'], ENT_QUOTES, 'UTF-8') ?><br>
+                            <!-- Update button -->
+                            <a href="/editHike?hikeId=<?= $hike['id'] ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Update Hike</a>
+
                             <!-- Delete button -->
                             <form action="/deleteHike" method="post">
                                 <input type="hidden" name="hikeId" value="<?= $hike['id'] ?>">
@@ -60,8 +63,6 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
                     <?php endforeach; ?>
                 </ul>
             </div>
-
-
 
 
 

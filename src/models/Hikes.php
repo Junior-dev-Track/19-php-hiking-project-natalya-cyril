@@ -85,5 +85,35 @@ class Hikes extends Database
         return $stmt->rowCount() > 0;
     }
 
+    public static function updateHikeById(int $hikeId, array $newData): bool
+    {
+        $database = new self();
+
+        // Prepare the SQL update statement
+        $sql = "UPDATE Hikes SET 
+                    name = :name, 
+                    distance = :distance, 
+                    duration = :duration, 
+                    elevation_gain = :elevation_gain, 
+                    description = :description, 
+                    updated_at = NOW() 
+                WHERE id = :id";
+
+        // Bind parameters
+        $params = [
+            ':id' => $hikeId,
+            ':name' => $newData['name'],
+            ':distance' => $newData['distance'],
+            ':duration' => $newData['duration'],
+            ':elevation_gain' => $newData['elevation_gain'],
+            ':description' => $newData['description']
+        ];
+
+        // Execute the query
+        $stmt = $database->query($sql, $params);
+
+        // Return true if the update was successful
+        return $stmt->rowCount() > 0;
+    }
 
 }
