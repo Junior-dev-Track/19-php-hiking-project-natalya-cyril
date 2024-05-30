@@ -138,5 +138,11 @@ class Hikes extends Database
         // Return true if the insert was successful
         return $stmt->rowCount() > 0;
     }
-
+    public static function getAllHikes(): array
+    {
+        $database = new self();
+        $stmt = $database->query("SELECT * FROM Hikes");
+        $hikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $hikes;
+    }
 }

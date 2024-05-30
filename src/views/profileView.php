@@ -43,7 +43,16 @@ if (!isset($_SESSION['isConnected']) || $_SESSION['isConnected'] === false) {
         <div class="list-container rounded-lg shadow-lg border-gray-200 p-4 bg-white md:col-span-2 lg:col-span-2 mt-4">
             <h2 class="text-lg font-semibold">List of Hikes</h2>
             <ul>
-                <?php foreach ($hikes as $hike): ?>
+                <?php
+                // Check the user role
+                if ($_SESSION['role'] === 'admin') {
+                    // If the user is an admin, get all hikes
+                    $hikes = \Controllers\HikesController::getAllHikes();
+                } else {
+                    // If the user is not an admin, get only the hikes related to the user
+                    $hikes = \Controllers\HikesController::getHikeUsers($_SESSION['id']);
+                }
+                foreach ($hikes as $hike): ?>
                     <li class="mb-4">
                         <p>Name: <?= htmlspecialchars($hike['name'], ENT_QUOTES, 'UTF-8') ?></p>
                         <p>Distance: <?= htmlspecialchars($hike['distance'], ENT_QUOTES, 'UTF-8') ?> km</p>

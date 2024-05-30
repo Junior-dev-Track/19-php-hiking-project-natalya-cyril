@@ -83,5 +83,9 @@ class HikesController
             throw new \Exception("Failed to add hike");
         }
     }
-
+    public static function getAllHikes(): array
+    {
+        $hikesModel = new Hikes();
+        return $hikesModel->getAllHikes();
+    }
 }
