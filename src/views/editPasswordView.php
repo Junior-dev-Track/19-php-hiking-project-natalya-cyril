@@ -13,8 +13,10 @@ list (
     ) = Auth::EditPassword();
 ?>
 
-<main>
-    <h1>Change Password</h1>
+<!--Todo : mettre en page -->
+
+
+<main class="flex-1 flex flex-col justify-center items-center">
 
     <?php if (isset($notification)): ?>
         <div class="$notification">
@@ -23,14 +25,15 @@ list (
     <?php endif; ?>
 
     <div class="change-password-container">
-        <form id="changePasswordForm" action="" method="post">
-            <label for="OldPassword">Old Password :</label>
-            <input id="OldPassword" type="password" name="oldPassword" placeholder="Old Password" required>
-            <label for="NewPassword">New Password :</label>
-            <input id="NewPassword" type="password" name="newPassword" placeholder="New Password" required>
-            <label for="ConfirmPassword">Confirm Password :</label>
-            <input id="ConfirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password" required>
-            <input type="submit" value="Change">
+        <form id="changePasswordForm" action="" method="post" class="authForm">
+            <div class="authFormSection">
+
+                <label for="OldPassword" class="authLabel">Change Password</label>
+                <input id="OldPassword" type="password" name="oldPassword" placeholder="Old Password" class="authFormField" required>
+                <input id="NewPassword" type="password" name="newPassword" placeholder="New Password" class="authFormField" required>
+                <input id="ConfirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password" class="authFormField" required>
+            </div>
+            <input type="submit" value="Change" class="authButton">
         </form>
     </div>
 </main>

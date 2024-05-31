@@ -34,6 +34,7 @@ if ($isValidForm) {
                     <label for="UserName" class="authLabel">Username</label>
                     <input id="UserName" type="text" name="username" placeholder="Username" class="authFormField" required>
                 </div>
+
                 <div class="authFormSection">
                     <label for="Name" class="authLabel">Name</label>
                     <input  id="Name" type="text" name="name" placeholder="First name" class="authFormField" required>
@@ -48,7 +49,6 @@ if ($isValidForm) {
 
                 <div class="authFormSection">
                     <label for="Email" class="authLabel">Email</label>
-
                     <input id="Email" type="email" name="email" placeholder="email" class="authFormField" required>
                     <input id="ConfirmEmail" type="email" name="confirm_email" placeholder="Confirm email" class="authFormField" required>
                 </div>
